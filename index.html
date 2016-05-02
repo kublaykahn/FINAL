@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>xhtmlfinal</title>
+        <link rel="stylesheet" href="main.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      // var search = prompt("Search for anything:");
+      var id;
+      $(".instagram").addClass("loader");
+      var url = "https://extraction.import.io/query/runtime/3c9433d7-9822-4873-8c7b-0841faeb9d6f?_apikey=172624aac6cf49de92d443561e2e06009df06765ff844288038b31da4491e96fbbad60e070313a6a620bf93760bb75ec474d3bee156618a363855e3141785b8984f4ab02926b3cdbcb4289eaa1f75964&url=http%3A%2F%2Fkublaykahn.tumblr.com";
+      $.getJSON(url, function(response){
+        console.log(response.extractorData.data[0].group);
+
+        var items = response.extractorData.data[0].group;
+
+        for (var i=0; i<items.length; i++){
+          $("body").append("<p>"+items[i].cap[0].text+"</p>")
+          $("body").append("<img src="+items[i].photo[0].src+" />")
+
+        }
+
+      });
+
+    });
+    </script>
+  </head>
+  <body>
+
+
+
+  <style>
+      body {
+          background-color:red;
+          position: center;
+      }
+      h1{ font-family: impact;
+        font-size: 60px;
+        color: #CCFF99;
+        position:center;
+
+
+      }
+      p {
+        font-family:impact;
+        font-size: 40px;
+        color: #CCFF99;
+        font-weight:bold;
+        position:center;
+      }
+
+     header {
+       font-family: georgia;
+       font-weight: bolder;
+       font-size: 25px;
+       color: #FFFF00;
+     }
+  </style>
+
+    <h1>Slices of fruit.</h1>
+    <div class="instagram"></div>
+    <div class="twitter"></div>
+
+  </body>
+</html>
